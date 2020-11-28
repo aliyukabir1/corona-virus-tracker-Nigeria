@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2 class="heading">Corana Update
+    For Nigeria <br>
+    Date : <span id="date"></span>
+    </h2>
+    
+
+    <div class="container">
+
+        <div class="top">
+            <div class="group">
+                <h2>New Death</h2>
+                 <p id="death"></p>
+            </div>
+        <div class="group">
+            <h2>New Comfirmed Cases</h2>
+            <p id="comfirmed"></p>
+    </div>
+
+    <div class="group">
+        <h2>New Recovered</h2>
+        <p id="recovered" class="recovered"></p>
+    </div>
+</div>
+
+    <div class="bottom">
+        <div class="group">
+            <h2>Total Death</h2>
+            <p id="total-death"></p>
+        </div>
+        <div class="group">
+            <h2>Total Comfirmed Cases</h2>
+            <p id="total-comfirmed"></p>
+        </div>
+    
+        <div class="group">
+            <h2>Total Recovered</h2>
+            <p id="total-recovered" class="recovered"></p>
+        </div>
+    </div>
+    </div>
+    <button class="refresh-button"> Refresh Data</button>
+    <script>
+        const death = document.querySelector('#death');
+        const comfirmed = document.querySelector('#comfirmed');
+        const recovered = document.querySelector('#recovered');
+        const date = document.querySelector('#date')
+        const  Totaldeaths = document.querySelector("#total-death")
+        const  Totalconfirmed = document.querySelector("#total-comfirmed")
+        const  Totalrecovered = document.querySelector("#total-recovered")
+        const refresh = document.querySelector('.refresh-button');
+
+        init();
+
+        function init(){
+            const link = 'https://api.covid19api.com/summary';
+        fetch(link).then(data => data.json()).then(data => {
+            
+            death.textContent = `${data.Countries[125].NewDeaths}`;
+            comfirmed.textContent = `${data.Countries[125].NewConfirmed}`;
+            recovered.textContent = `${data.Countries[125].NewRecovered}`;
+            date.textContent =  `${data.Countries[125].Date}`;
+            Totalconfirmed.textContent = `${data.Countries[125].TotalConfirmed}`;
+            Totaldeaths.textContent = `${data.Countries[125].TotalDeaths}`;
+            Totalrecovered.textContent = `${data.Countries[125].TotalRecovered}`;
+        });
+        }
+
+        refresh.addEventListener('click',init);
+ 
+    </script>
+</body>
+</html>
+
+
+
+
+
