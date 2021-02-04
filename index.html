@@ -64,8 +64,11 @@
         function init(){
             const link = 'https://api.covid19api.com/summary';
         fetch(link).then(data => data.json()).then(data => {
-            const nigeria = data.Countries[125];
-            console.log(nigeria['Country'])
+            const number = data.Countries.findIndex(x => x.Country === 'Nigeria')
+
+            
+            const nigeria = data.Countries[number];
+            console.log(nigeria['Country']+' is at index ',number)
             death.textContent = `${nigeria.NewDeaths}`;
             comfirmed.textContent = `${nigeria.NewConfirmed}`;
             recovered.textContent = `${nigeria.NewRecovered}`;
