@@ -64,7 +64,7 @@
         function init(){
             const link = 'https://api.covid19api.com/summary';
         fetch(link).then(data => data.json()).then(data => {
-            const nigeria = data.Countries[124];
+            const nigeria = data.Countries[125];
             console.log(nigeria['Country'])
             death.textContent = `${nigeria.NewDeaths}`;
             comfirmed.textContent = `${nigeria.NewConfirmed}`;
