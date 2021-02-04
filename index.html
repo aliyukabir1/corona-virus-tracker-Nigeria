@@ -59,26 +59,40 @@
         const  Totalrecovered = document.querySelector("#total-recovered")
         const refresh = document.querySelector('.refresh-button');
 
-        init();
+        
+
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+       
+        
 
         function init(){
             const link = 'https://api.covid19api.com/summary';
-        fetch(link).then(data => data.json()).then(data => {
-            const number = data.Countries.findIndex(x => x.Country === 'Nigeria')
+        
+            fetch(link)
+            .then(data => data.json())
+            .then(data => {
 
-            
+            const number = data.Countries.findIndex(x => x.Country === 'Nigeria')
             const nigeria = data.Countries[number];
+
             console.log(nigeria['Country']+' is at index ',number)
             death.textContent = `${nigeria.NewDeaths}`;
             comfirmed.textContent = `${nigeria.NewConfirmed}`;
             recovered.textContent = `${nigeria.NewRecovered}`;
-            date.textContent =  `${nigeria.Date}`;
+            date.textContent =  `${today}`;
             Totalconfirmed.textContent = `${nigeria.TotalConfirmed}`;
             Totaldeaths.textContent = `${nigeria.TotalDeaths}`;
             Totalrecovered.textContent = `${nigeria.TotalRecovered}`;
         });
         }
 
+        init();
         refresh.addEventListener('click',init);
  
     </script>
