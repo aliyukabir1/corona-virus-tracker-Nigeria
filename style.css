@@ -12,9 +12,27 @@ h2{
     color: white;
     font-size: 2rem; 
     padding: 2rem;
+    padding-top: 1rem
+
+}
+.float{
+    position: fixed;
+    top: 50%; 
+    transform:rotate(90deg);
+    right:0%;
+    width: 155px;
+    background-color:rgba(239,229,229,0.4);
+    color:#6b090e;
+    font-size:1.3rem;
+    font-style: italic;
+    font-family: monospace;
+}
+.float a{
+    text-decoration: none;
+    color:wheat;
 }
 .container{
-    padding: 40px 20px;
+    padding: 10px 20px;
     background-color: rgba(33, 43, 55, 0.3);
     width: 80%;
     margin: auto;
@@ -52,5 +70,13 @@ p.recovered{
         width: 80%;
         margin: auto
     }
+.float{
+top:90%;
+left:0;
+text-align:left;
+transform:none;
+padding-left:5px;
+
+}
     
 }
